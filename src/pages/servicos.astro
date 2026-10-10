@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import { services } from '../data/site';
+---
+
+<Base
+  title="Serviços — IDE Software"
+  description="Software sob encomenda, produtos customizáveis, consultoria em TI, web design, hospedagem de aplicações e portais. Serviços da IDE Software Ltda."
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Serviços</p>
+      <h1>O que podemos construir com você.</h1>
+      <p>
+        Em um projeto, essas frentes se combinam: um sistema sob encomenda quase sempre pede
+        interface, publicação e um acordo claro sobre dados.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 1.5rem">
+    <div class="wrap detail-list">
+      {
+        services.map((service) => (
+          <article class="detail" id={service.id}>
+            <span class="index">{service.index}</span>
+            <div>
+              <h2>{service.title}</h2>
+              <p>{service.body}</p>
+              <ul class="includes">
+                {service.includes.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+              <p class="when">{service.when}</p>
+              <p style="margin-top: 1rem">
+                <a class="button" href={`/contato?assunto=${encodeURIComponent(service.title)}`}>
+                  Falar sobre este serviço
+                </a>
+              </p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</Base>

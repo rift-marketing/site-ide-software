@@ -1,0 +1,103 @@
+---
+import Base from '../layouts/Base.astro';
+import { company } from '../data/site';
+---
+
+<Base
+  title="Contato — IDE Software"
+  description="Fale com a IDE Software sobre um sistema sob encomenda, um produto digital ou uma consultoria. Sede em Pinheiros, São Paulo."
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Contato</p>
+      <h1>Descreva o que a operação precisa resolver.</h1>
+      <p>
+        Uma mensagem objetiva basta: o processo, quem usa e o que já foi tentado. Se o
+        encaixe for ruim, a resposta diz isso.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 1.5rem">
+    <div class="wrap contact-grid">
+      <aside class="contact-aside">
+        <p class="meta">Sede</p>
+        <address class="address">
+          {company.legalName}<br />
+          {company.address}<br />
+          {company.neighborhood}, {company.city}/{company.state}<br />
+          CEP {company.cep}
+        </address>
+        <p>
+          <a href={company.mapsUrl} rel="noopener noreferrer">Ver no mapa</a>
+        </p>
+      </aside>
+
+      <form id="contato">
+        <label>
+          Nome
+          <input name="nome" type="text" autocomplete="name" required />
+        </label>
+        <label>
+          Empresa
+          <input name="empresa" type="text" autocomplete="organization" />
+        </label>
+        <label>
+          E-mail para resposta
+          <input name="email" type="email" autocomplete="email" required />
+        </label>
+        <label>
+          O que você precisa
+          <textarea name="mensagem" required></textarea>
+        </label>
+        <button class="button" type="submit">Copiar mensagem</button>
+        <p class="form-note" id="form-note" role="status">
+          O botão copia o texto para você colar num e-mail. Nada fica gravado neste site.
+        </p>
+      </form>
+    </div>
+  </section>
+</Base>
+
+<script>
+  function setupForm() {
+    const form = document.querySelector<HTMLFormElement>('#contato');
+    if (!form || form.dataset.bound === 'true') return;
+    form.dataset.bound = 'true';
+
+    const mensagem = form.querySelector<HTMLTextAreaElement>('textarea[name="mensagem"]');
+    const note = document.querySelector<HTMLElement>('#form-note');
+    const assunto = new URLSearchParams(window.location.search).get('assunto');
+    if (mensagem && assunto && !mensagem.value) {
+      mensagem.value = `Quero conversar sobre ${assunto}.\n\n`;
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const nome = String(data.get('nome') ?? '').trim();
+      const empresa = String(data.get('empresa') ?? '').trim();
+      const email = String(data.get('email') ?? '').trim();
+      const texto = String(data.get('mensagem') ?? '').trim();
+      const lines = [
+        'Olá, IDE Software.',
+        '',
+        `Nome: ${nome}`,
+        empresa ? `Empresa: ${empresa}` : '',
+        `E-mail: ${email}`,
+        '',
+        texto,
+      ].filter(Boolean);
+
+      try {
+        await navigator.clipboard.writeText(lines.join('\n'));
+        if (note) note.textContent = 'Mensagem copiada.';
+      } catch {
+        if (note) note.textContent = 'Não foi possível copiar daqui. Selecione o texto e copie manualmente.';
+      }
+    });
+  }
+
+  setupForm();
+  document.addEventListener('astro:page-load', setupForm);
+</script>

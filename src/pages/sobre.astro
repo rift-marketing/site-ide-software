@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro';
+import { company } from '../data/site';
+---
+
+<Base
+  title="A empresa — IDE Software"
+  description="A IDE Software é uma empresa de tecnologia em Pinheiros, São Paulo. Software sob encomenda, com atendimento direto de quem constrói."
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">A empresa</p>
+      <h1>Uma software house em {company.neighborhood}.</h1>
+      <p>
+        IDE Software é o nome da empresa. Não é a marca de um editor de código nem de um
+        produto único. Quem contrata fala com quem constrói, e cada trabalho nasce do
+        problema do cliente.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Como a IDE Software trabalha</h2>
+        <p>Três combinados que valem para projeto fechado, produto ou consultoria.</p>
+      </div>
+      <div class="principles">
+        <article>
+          <h3>Escopo escrito</h3>
+          <p>
+            O que será feito, o que fica de fora e como a entrega será avaliada ficam
+            explícitos antes da construção ganhar ritmo.
+          </p>
+        </article>
+        <article>
+          <h3>Conversa direta</h3>
+          <p>
+            Quem decide do lado do cliente fala com quem constrói. Menos camada, menos
+            tradução perdida no meio do caminho.
+          </p>
+        </article>
+        <article>
+          <h3>Software utilizável</h3>
+          <p>
+            A medida de pronto é a operação conseguir usar. Documento ajuda; sistema no ar é
+            o que conta.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Onde estamos</h2>
+        <p>
+          Sede em {company.neighborhood}, {company.city}, desde {company.founded}. O trabalho
+          acompanha o projeto — presencial quando faz diferença, remoto quando o sistema
+          pede.
+        </p>
+      </div>
+      <p>
+        <a class="button secondary" href="/contato">Ver o endereço e escrever</a>
+      </p>
+    </div>
+  </section>
+</Base>

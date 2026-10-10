@@ -1,0 +1,42 @@
+---
+import { company, nav } from '../data/site';
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="logo" href="/">
+        <span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="logo-text">
+          <strong>IDE</strong>
+          <em>Software</em>
+        </span>
+      </a>
+      <p>
+        Empresa de tecnologia em {company.neighborhood}, {company.city}. Desenvolvemos software sob
+        encomenda, produtos customizáveis e consultoria de TI.
+      </p>
+    </div>
+    <div>
+      <p class="meta">Páginas</p>
+      <ul>
+        <li><a href="/">Início</a></li>
+        {nav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <p class="meta">Sede</p>
+      <p>
+        {company.neighborhood}, {company.city}/{company.state}
+      </p>
+      <p>
+        <a href="/contato">Falar sobre um projeto</a>
+      </p>
+    </div>
+  </div>
+  <div class="wrap legal">
+    {company.legalName} · {company.neighborhood}, {company.city}
+  </div>
+</footer>

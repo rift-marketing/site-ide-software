@@ -1,0 +1,145 @@
+---
+import Base from '../layouts/Base.astro';
+import { company, services, steps } from '../data/site';
+
+const featured = services[0];
+const rest = services.slice(1);
+---
+
+<Base
+  title="IDE Software — software sob encomenda em São Paulo"
+  description="A IDE Software Ltda é uma empresa de tecnologia em São Paulo. Desenvolvemos software sob encomenda, produtos customizáveis, consultoria de TI, web design, hospedagem e portais."
+>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Empresa de tecnologia · {company.neighborhood}</p>
+        <h1>Software feito para a operação da sua empresa.</h1>
+        <p class="lede">
+          A IDE Software projeta e constrói sistemas sob encomenda, produtos digitais e
+          consultoria de tecnologia. O trabalho começa no problema do negócio e termina em
+          software que a equipe consegue usar.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="/contato">Conversar sobre um projeto</a>
+          <a class="button secondary" href="/servicos">Ver os serviços</a>
+        </div>
+      </div>
+      <aside class="plate" aria-label="Como começa um projeto">
+        <header>
+          <strong>Como começa</strong>
+          <span>{company.neighborhood}</span>
+        </header>
+        <dl>
+          <div>
+            <dt>01</dt>
+            <dd>Entender o problema e quem usa</dd>
+          </div>
+          <div>
+            <dt>02</dt>
+            <dd>Escrever o que entra e o que fica de fora</dd>
+          </div>
+          <div>
+            <dt>03</dt>
+            <dd>Construir em ciclos, com algo utilizável</dd>
+          </div>
+          <div>
+            <dt>04</dt>
+            <dd>Entregar no ar, com caminho para evoluir</dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap band-inner">
+      <p class="serif">IDE é o nome da empresa. O que entregamos é o sistema do seu negócio.</p>
+      <p>
+        Não vendemos um produto de prateleira com a nossa marca. Cada trabalho é um software,
+        um portal ou uma consultoria desenhados para um processo específico — com escopo,
+        prazo e responsável definidos.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>O que a empresa faz</h2>
+        <p>
+          Sistemas sob encomenda, produtos, consultoria, web, dados e portais — combinados
+          conforme o problema, não como um pacote fechado.
+        </p>
+      </div>
+      <div class="service-grid">
+        <a class="service-card" href={`/servicos#${featured.id}`}>
+          <span class="index">{featured.index}</span>
+          <h3>{featured.title}</h3>
+          <p>{featured.summary}</p>
+          <span class="more">Ver este serviço</span>
+        </a>
+        {
+          rest.map((service) => (
+            <a class="service-card" href={`/servicos#${service.id}`}>
+              <span class="index">{service.index}</span>
+              <h3>{service.title}</h3>
+              <p>{service.summary}</p>
+              <span class="more">Ver este serviço</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Como um projeto anda</h2>
+        <p>Quatro etapas, sempre com alguém da empresa do outro lado da conversa.</p>
+      </div>
+      <div class="steps">
+        {
+          steps.map((step) => (
+            <article class="step">
+              <span class="index">{step.index}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0">
+    <div class="wrap">
+      <div class="fit-grid">
+        <article class="fit">
+          <h3>Faz sentido quando</h3>
+          <ul>
+            <li>A operação depende de um processo que software genérico não cobre.</li>
+            <li>Você precisa de um sistema, um portal ou um produto digital com dono claro.</li>
+            <li>Quer quem desenha a solução e também constrói.</li>
+          </ul>
+        </article>
+        <article class="fit quiet">
+          <h3>Vale procurar outro caminho quando</h3>
+          <ul>
+            <li>O que falta é só uma licença de uma ferramenta que já resolve o caso.</li>
+            <li>O prazo pede começar sem entender quem usa e qual regra vale.</li>
+            <li>A expectativa é um pacote fechado, sem adaptação ao processo.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="cta" style="margin-top: 1.5rem">
+        <div>
+          <h2>Conte o problema. A gente responde se faz sentido construir.</h2>
+          <p>Atendimento direto, a partir de {company.neighborhood}.</p>
+        </div>
+        <a class="button" href="/contato">Abrir uma conversa</a>
+      </div>
+    </div>
+  </section>
+</Base>
