@@ -32,7 +32,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: auto
         run: |
-          DEST="s3://${{ secrets.R2_BUCKET_NAME }}/sites/${{ vars.CLIENT_ID }}/"
+          DEST="s3://${{ secrets.R2_BUCKET_NAME }}/${{ vars.CLIENT_ID }}/"
 
           aws s3 sync dist/ "$DEST" \
             --endpoint-url "${{ secrets.R2_ENDPOINT }}" \
