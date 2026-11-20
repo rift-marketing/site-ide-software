@@ -1,0 +1,48 @@
+name: Deploy Landing IDE to R2
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Astro static site
+        run: npm run build
+
+      - name: Sync static files to Cloudflare R2
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+        run: |
+          DEST="s3://${{ secrets.R2_BUCKET_NAME }}/sites/${{ vars.CLIENT_ID }}/"
+
+          aws s3 sync dist/ "$DEST" \
+            --endpoint-url "${{ secrets.R2_ENDPOINT }}" \
+            --delete \
+            --cache-control "public, max-age=60, must-revalidate"
+
+          if [ -d "dist/_astro" ]; then
+            aws s3 cp dist/_astro/ "${DEST}_astro/" \
+              --endpoint-url "${{ secrets.R2_ENDPOINT }}" \
+              --recursive \
+              --cache-control "public, max-age=31536000, immutable" \
+              --metadata-directive REPLACE
+          fi
