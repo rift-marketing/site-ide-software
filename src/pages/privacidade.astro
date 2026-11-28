@@ -1,0 +1,117 @@
+---
+import Base from '../layouts/Base.astro';
+import { company } from '../data/site';
+
+const updated = '28 de novembro de 2026';
+---
+
+<Base
+  title="Política de privacidade — IDE Software"
+  description="Como o site da IDE Software trata dados pessoais: o que é coletado, para que serve e quais são os seus direitos conforme a LGPD."
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Política de privacidade</p>
+      <h1>Como tratamos os seus dados.</h1>
+      <p>
+        Este site coleta o mínimo possível. Aqui está o que acontece com as informações de
+        quem o visita ou entra em contato. Atualizada em {updated}.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 1.5rem">
+    <div class="wrap prose">
+      <h2>1. Quem é o controlador</h2>
+      <p>
+        {company.legalName}, com sede na {company.address}, {company.neighborhood},
+        {company.city}/{company.state}, CEP {company.cep}, é a responsável pelo tratamento
+        dos dados pessoais descrito nesta política, nos termos da Lei Geral de Proteção de
+        Dados (Lei nº 13.709/2018, a LGPD).
+      </p>
+
+      <h2>2. O que coletamos</h2>
+      <ul>
+        <li>
+          <strong>Formulário de contato.</strong> O formulário da página de
+          <a href="/contato">Contato</a> apenas monta uma mensagem e a copia para a sua área de
+          transferência. Nenhum dado digitado é enviado a um servidor nem armazenado por este
+          site. Se você colar a mensagem num e-mail e enviá-la a nós, passamos a tratar o que
+          estiver nela (nome, empresa, e-mail e o conteúdo escrito).
+        </li>
+        <li>
+          <strong>Dados de navegação.</strong> O site não usa cookies de rastreamento,
+          publicidade ou análise de audiência. A hospedagem pode registrar dados técnicos de
+          acesso, como endereço IP, data e hora e página solicitada, para segurança e
+          funcionamento do serviço.
+        </li>
+      </ul>
+
+      <h2>3. Para que usamos</h2>
+      <p>
+        Usamos as informações recebidas por e-mail apenas para responder ao seu contato,
+        avaliar e conduzir uma possível proposta de trabalho e cumprir obrigações legais. Não
+        vendemos dados e não os usamos para publicidade.
+      </p>
+
+      <h2>4. Base legal</h2>
+      <p>
+        O tratamento ocorre para a execução de procedimentos preliminares relacionados a um
+        contrato a pedido do titular, para o atendimento do seu pedido de contato, para o
+        cumprimento de obrigação legal e, quando aplicável, para o nosso legítimo interesse em
+        manter o site seguro (LGPD, art. 7º).
+      </p>
+
+      <h2>5. Serviços de terceiros</h2>
+      <p>
+        As fontes do site são carregadas do Google Fonts. Ao abrir uma página, o seu
+        navegador faz uma requisição aos servidores do Google, que podem receber o seu
+        endereço IP e dados do navegador, conforme a política de privacidade do Google. O
+        mapa do endereço, na página de contato, é apenas um link para o Google Maps e só
+        envolve o Google se você clicar nele.
+      </p>
+
+      <h2>6. Compartilhamento</h2>
+      <p>
+        Não compartilhamos dados pessoais com terceiros, exceto prestadores que apoiam a
+        operação do site e do e-mail (como hospedagem e correio eletrônico), ou quando a lei
+        ou uma ordem de autoridade exigir.
+      </p>
+
+      <h2>7. Por quanto tempo guardamos</h2>
+      <p>
+        Mantemos mensagens de contato pelo tempo necessário para atender ao pedido e, se
+        houver contratação, pelos prazos legais aplicáveis. Depois disso, os dados são
+        eliminados ou anonimizados.
+      </p>
+
+      <h2>8. Seus direitos</h2>
+      <p>
+        Conforme o art. 18 da LGPD, você pode solicitar confirmação do tratamento, acesso,
+        correção, anonimização, bloqueio ou eliminação de dados, portabilidade, informação
+        sobre compartilhamento e revogação de consentimento, quando aplicável. Também pode
+        reclamar à Autoridade Nacional de Proteção de Dados (ANPD).
+      </p>
+
+      <h2>9. Como exercer seus direitos</h2>
+      <p>
+        Para qualquer pedido sobre dados pessoais, escreva pela página de
+        <a href="/contato">Contato</a>, indicando que se trata de um assunto de privacidade.
+        Responderemos dentro do prazo previsto em lei.
+      </p>
+
+      <h2>10. Segurança</h2>
+      <p>
+        Adotamos medidas técnicas e organizacionais razoáveis para proteger as informações
+        contra acesso não autorizado, perda e alteração. O site é servido por conexão
+        criptografada (HTTPS).
+      </p>
+
+      <h2>11. Alterações desta política</h2>
+      <p>
+        Podemos atualizar esta política para refletir mudanças no site ou na legislação. A data
+        da última revisão aparece no topo desta página.
+      </p>
+    </div>
+  </section>
+</Base>
