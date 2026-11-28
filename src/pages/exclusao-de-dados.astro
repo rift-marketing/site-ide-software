@@ -1,0 +1,58 @@
+---
+import Base from '../layouts/Base.astro';
+import { company } from '../data/site';
+
+const email = 'ide@pedrogardim.com';
+const subject = encodeURIComponent('Solicitação de exclusão de dados');
+---
+
+<Base
+  title="Exclusão de dados — IDE Software"
+  description="Como solicitar a exclusão dos seus dados pessoais tratados pela IDE Software."
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Exclusão de dados</p>
+      <h1>Como pedir a exclusão dos seus dados.</h1>
+      <p>
+        Você pode solicitar a qualquer momento a exclusão dos dados pessoais que a {company.name}
+        mantém sobre você, em qualquer app ou site da empresa.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 1.5rem">
+    <div class="wrap prose">
+      <h2>Passo a passo</h2>
+      <ol>
+        <li>
+          Envie um e-mail para
+          <a href={`mailto:${email}?subject=${subject}`}>{email}</a> com o assunto
+          “Solicitação de exclusão de dados”.
+        </li>
+        <li>
+          Informe o nome e o e-mail ou identificador usado no serviço (por exemplo, o e-mail
+          da conta ou do login social), para que possamos localizar seus dados.
+        </li>
+        <li>
+          Se o login foi feito por uma plataforma como o Facebook, informe também o nome do
+          perfil usado. Você pode ainda remover o app nas configurações da plataforma.
+        </li>
+      </ol>
+
+      <h2>O que acontece depois</h2>
+      <p>
+        Confirmamos o recebimento, podemos pedir uma verificação simples de identidade e
+        excluímos os dados em até 30 dias, avisando por e-mail quando concluído. Dados que a
+        lei nos obriga a manter (por exemplo, registros fiscais ou de acesso) são preservados
+        apenas pelo prazo legal.
+      </p>
+
+      <h2>Mais informações</h2>
+      <p>
+        Veja a <a href="/privacidade">política de privacidade</a> para saber quais dados
+        tratamos e quais são os seus direitos.
+      </p>
+    </div>
+  </section>
+</Base>
